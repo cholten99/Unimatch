@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<!--[if lte IE 8 ]> <html class="old"> <![endif]--> 
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="modern"> <!--<![endif]--> 
+	<head>
+		<title>UniMatch</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
+		
+		<!-- Styles -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="jquery-ui-1.8.14.custom.css" >
+		
+		<!-- Google Maps Stuff -->
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+		
+		<!-- jQuery Stuff -->
+		<!-- 1.6.2 -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<!-- 1.8.14 -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
+		
+		<!-- Our stuff -->
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="map.js"></script>		
+	</head>
+	<body>
+		<div id="search-box" class="formbox"> 
+			<img src="logo_small.png" alt="UniMatch logo" style="float: left" class="logo">
+			
+			<div class="notes">
+			
+				<label class="explain">Data from 
+				<a href="http://www.guardian.co.uk/news/datablog/2011/may/17/university-guide-2012-data-guardian" target="_blank">The Guardian</a>, 
+				<a href="http://www.ucas.ac.uk/" target="_blank">UCAS</a></label><br>
+				<label class="explain">and <a href="http://twitter.com/msh100" target="_blank">@msh100</a>&#39;s
+				<a href="http://unisearch.msh100.co.uk/" target="_blank">UniSearch</a>.</label><br><br>
+		
+				<label class="explain">Inspired by
+				<a href="http://visafree.co.uk" target="_blank">visafree.co.uk</a>.</label>
+			
+				<label class="explain">Built with
+				<a href="http://maps.google.com" target="_blank">Google Maps</a>.
+				<a href="http://famfamfam.com" target="_blank">Icons</a>.
+				</label>
+				
+				<br><br>
+
+				<label class="explain">Built by 
+				<a href="http://twitter.com/YRSBlackfriars" target="_blank">@YRSBlackfriars</a> at
+				<a href="http://fluxx.uk.com/" target="_blank">Fluxx</a>. Get the
+				<a href="code.zip">code</a>.
+				</label>
+				
+				<br><br><br>
+			</div>
+			
+			<div id="unititle">UniMatch finds the university that&#39;s best for you.</div><br>
+			<button id="go">Find my UniMatch</button>
+			<div id="filter-label">Fill in some of the form below to narrow down your choices.</div>
+			<br><br><br>
+
+			<div class="field-box">
+				<!-- Course Name -->
+				<div title="Course Name" id="course-dialog" style="display:none">Enter a course name to display only the universities that offer this course.</div>
+				<img src="help.png" onclick="$('#course-dialog').dialog({modal:true})" alt="Help" class="imghelp">
+				<input id="coursename" type="text" class="slidertext"><label id="reqd">* Required</label>
+			</div>
+			
+			<div class="field-box">
+				<!-- University Group -->
+				<div title="University Group" id="group-dialog" style="display:none">Select a university group to display.</div>
+				<img src="help.png" alt="Help" onclick="$('#group-dialog').dialog({modal:true})" class="imghelp"> 
+				<label class="drop-label">University Group:</label>
+				<select id="group-combobox" size="1" class="dropdown">
+					<option value="Any">Any</option>
+					<option value="Russell">Russell Group</option>
+					<option value="1994">1994 Group</option>
+					<option value="Million+">Million+</option>
+					<option value="Alliance">University Alliance</option>
+					<option value="UKADIA">UKADIA</option>
+				</select>
+			</div>
+			
+			<div class="field-box">
+				<!-- Course Type -->
+				<div title="Course Type" id="type-dialog" style="display:none">Use this to select only courses that award a particular qualification when you complete your course.</div>
+				<img src="help.png" alt="Help" onclick="$('#type-dialog').dialog({modal:true})" class="imghelp">  
+				<label class="drop-label">Course Type:</label>
+				<select id="type-combobox" size="1" class="dropdown">
+					<option value="Any">Any</option>
+					<option value="All">Advanced Nursing Diploma</option>
+					<option value="All">Cert HE</option>
+					<option value="All">Postgraduate social work</option>
+					<option value="All">Degree</option>
+					<option value="All">Diploma in Nursery and Midwifery</option>
+					<option value="All">DIP HE</option>
+					<option value="All">Foundation Degree</option>
+					<option value="All">Graduate Diploma in Nursing</option>
+					<option value="All">HNC</option>
+					<option value="All">HND</option>
+				</select>
+			</div>
+			
+			<div class="field-box">
+				<!-- UCAS -->
+				<div title="UCAS Points" id="ucas-dialog" style="display:none">Filter universities by their entry requirements. This is the university average across all subjects, and may not be relevant to your course.</div>
+				<img src="help.png" alt="Help" onclick="$('#ucas-dialog').dialog({modal:true})" class="imghelp"> 
+				<label class="drop-label">UCAS Points Required:</label>
+				<select id="ucas-combobox" size="1" class="dropdown">
+					<option value="0">Any</option>
+					<option value="1">0 - 180</option>
+					<option value="2">180 - 240</option>
+					<option value="3">240 - 300</option>
+					<option value="4">300 - 360</option>
+					<option value="5">360+</option>
+				</select>
+			</div>
+			
+			<div class="field-box" style="display: none">
+				<!-- Home Postcode --> 
+				<div title="Home Postcode" id="distance-dialog" style="display:none">Your home postocde will allow you to select only universities within the travel time you specify.</div>
+				<img src="help.png" alt="Help" onclick="$('#distance-dialog').dialog({modal:true})" class="imghelp"> 
+				<input id="postcode" type="text" class="slidertext"><br>
+				<!-- Travel Time -->
+				<div title="Travel Time" id="traveltime-dialog" style="display:none">Select universities by the travel time between them and your postcode.</div>
+				<img src="help.png" alt="Help" onclick="$('#traveltime-dialog').dialog({modal:true})" class="imghelp"> 
+				<label id="amount-distance" class="slidertext">Travel Time:</label>
+				<div id="slider-distance" class="slider"></div>
+			</div>
+			 
+			<div class="field-box">
+				<!-- Tuition Fee -->
+				<div title="Tuition Fee" id="tuitionfee-dialog" style="display:none">Filter out your results by selecting the range of tuition fees you are prepared to pay.</div>
+				<img src="help.png" alt="Help" onclick="$('#tuitionfee-dialog').dialog({modal:true})" class="imghelp">
+				<label id="amount-tuition" class="slidertext">Tuition Fee:</label>
+				<div id="slider-tuition" class="slider"></div>
+			</div>
+			
+			<div class="field-box">
+				<!-- Student Staff Ratio -->
+				<div title="Student Staff Ratio" id="studentstaff-dialog" style="display:none">Select universities by their student:staff ratio. Hint - The average is between 13 and 18 students per member of staff.</div>
+				<img src="help.png" alt="Help" onclick="$('#studentstaff-dialog').dialog({modal:true})" class="imghelp"> 
+				<label id="amount-staff" class="slidertext">Student Staff Ratio:</label>
+				<div id="slider-staff" class="slider"></div>
+			</div>
+			
+			<div class="field-box">
+				<!-- Career Prospects -->
+				<div title="Career Prospects" id="career-dialog" style="display:none">Filter universities by the percentage of graduates employed after completing their course. This is the university average across all subjects, and may not be relevant to your course.</div>
+				<img src="help.png" alt="Help" onclick="$('#career-dialog').dialog({modal:true})" class="imghelp"> 
+				<label id="amount-career" class="slidertext">Career Prospects:</label>
+				<div id="slider-career" class="slider"></div>
+			</div>
+			
+			<div class="field-box">
+				<!-- NSS Teacher -->
+				<div title="NSS Teacher" id="nssteacher-dialog" style="display:none">Select universities based on how their teaching quality was rated in the National Student Survey (NSS).</div>
+				<img src="help.png" alt="Help" onclick="$('#nssteacher-dialog').dialog({modal:true})" class="imghelp"> 
+				<label id="amount-teacher" class="slidertext">Teacher Rating:</label>
+				<div id="slider-teacher" class="slider"></div>
+			</div>
+			
+			<div class="field-box">
+				<!-- NSS Feedback -->
+				<div title="NSS Feedback" id="nssfeedback-dialog" style="display:none">Select universities based on how their teaching & feedback outside lectures was rated in the National Student Survey (NSS).</div>
+				<img src="help.png" alt="Help" onclick="$('#nssfeedback-dialog').dialog({modal:true})" class="imghelp"> 
+				<label id="amount-feedback" class="slidertext">Feedback Rating:</label>
+				<div id="slider-feedback" class="slider"></div>
+			</div>
+			
+			<div class="field-box">
+				<!-- NSS Overall -->
+				<div title="NSS Overall" id="nssoverall-dialog" style="display:none">Select universities based on how they were rated overall in the National Student Survey (NSS).</div>
+				<img src="help.png" alt="Help" onclick="$('#nssoverall-dialog').dialog({modal:true})" class="imghelp"> 
+				<label id="amount-overall" class="slidertext">Overall Rating:</label>
+				<div id="slider-overall" class="slider"></div>
+			</div>
+			
+			<div class="field-box">
+				<!-- Pub Count -->
+				<div title="Pub Count" id="pub-dialog" style="display:none">Filter universities based on how may pubs there are in the area.</div>
+				<img src="help.png" alt="Help" onclick="$('#pub-dialog').dialog({modal:true})" class="imghelp"> 
+				<label id="amount-pubs" class="slidertext">Pubs in Town:</label>
+				<div id="slider-pubs" class="slider"></div>
+			</div>
+			
+			<div class="field-box">
+				<!-- Clubs Count -->
+				<div title="Clubs Count" id="clubs-dialog" style="display:none">Filter universities based on how may clubs there are in the area.</div>
+				<img src="help.png" alt="Help" onclick="$('#clubs-dialog').dialog({modal:true})" class="imghelp"> 			
+				<label id="amount-clubs" class="slidertext">Clubs in Town:</label>
+				<div id="slider-clubs" class="slider"></div>
+			</div>
+		</div>
+		
+		<div id="fluxxions">
+		  <img src="fluxxions.png" alt="The Fluxx Capacitors! logo">
+		</div>
+		
+		<div id="results-box" class="formbox">
+			<div id="res-text"><img src="logo_small.png" alt="UniMatch logo" class="logo"></div>
+			<button id="back">Main Page</button>
+			
+			<label class="drop-label">Sort By:</label>
+			<select id="sort-combobox" size="1" class="dropdown">
+				<option value="alpha">Alphabetical</option>
+				<option value="staff">Student : Staff Ratio</option>
+				<option value="ucas">UCAS Points</option>
+				<option value="car">Career Prospects</option>
+				<option value="over">NSS Overall</option>
+				<option value="tut">Tuition Fees</option>
+			</select>
+			
+			<br> 
+			<div id="loading"><br><br><br>Loading....</div>
+			<div id="results-container"></div>
+		</div>
+		<div id="map_canvas"></div>
+	</body>
+</html>

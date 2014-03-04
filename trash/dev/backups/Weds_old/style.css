@@ -1,0 +1,130 @@
+html { 
+	height: 100%; 
+}
+body { 
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+#map_canvas { 
+	height: 100%;
+}
+
+body {
+	font-size:20px;
+	font-family: chasm;
+	color: #333; 
+}
+h2 {
+	font-size: 50px;
+	margin-top: 0;
+	margin-bottom: 10px;
+	font-family: chasm;
+}
+h3 {
+	font-size: 30px;
+	margin-top: 0;
+	margin-bottom: 0;
+	font-family: chasm;
+}
+.fieldtitle {
+	font-size: 14px;
+	line-height: 90%;
+	font-family: chasm;
+}
+input {
+	border: 1px solid black;
+	color: #666;
+	font-size: 20px;
+
+	font-family: chasm;
+	margin-left: -1px;
+}
+a {
+	color: #666;
+}
+.searchbox {
+	z-index: 1;
+	position: absolute;
+	top: 50px;
+	bottom: 50px;
+	left: 90px;
+	background: rgba(255,255,255,0.6);
+	padding: 20px;
+	width: 35%;
+	border: 1px solid black;
+	overflow-y: scroll;
+}
+.slidertext {
+	font-family: chasm
+	;
+	border:0;
+	color:#Cccccc; 
+	font-weight:bold;
+	width: 55%;
+}
+.fluxbox {
+	z-index: 1;
+	position: absolute; 
+	right: 20px;
+	bottom: 20px; 
+	background: rgba(255,0,0,0.3);
+	padding: 5px;
+	width: 530;
+	height: 116;	
+	border: 1px solid black;
+	-moz-transition-property: opacity;
+	-moz-transition-duration: 1s;
+	-webkit-transition-property: opacity;
+	-webkit-transition-duration: 1s;
+	-o-transition-property: opacity;
+	-o-transition-duration: 1s;
+}
+.fluxbox:hover {
+	opacity: 0;
+	-moz-transition-property: opacity;
+	-moz-transition-duration: 1s;
+	-webkit-transition-property: opacity;
+	-webkit-transition-duration: 1s;
+	-o-transition-property: opacity;
+	-o-transition-duration: 1s;
+	
+.unititle{
+	font-family: chasm;
+	f
+}
+	
+}
+#res-text {
+        font-size: 1.4em;
+}
+#results-container {
+	width: 100%;
+	height: 80%;
+}
+#results-sel .ui-selecting { 
+	background: #E9E9E9; 
+}
+#results-sel .ui-selected { 
+	background: #CCCCCC; 
+	color: white; 
+}
+#results-sel {
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+	width: 60%; 
+}
+#results-sel li { 
+	margin: 3px; 
+	padding: 0.4em; 
+	font-size: 1.4em; 
+	height: 18px; 
+}
+.googlemaps {
+	width: 100%;
+	height: 100%;
+}
+.addthis_toolbox {
+	padding: 10px;
+}

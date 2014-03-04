@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UniMatch</title>
+		<meta charset="utf-8">
+		<!-- Google Maps Stuff -->
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+		<script src="geoxml3.js"></script>
+		<!-- jQuery Stuff -->
+		<!-- 1.6.2 -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<!-- 1.8.14 -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
+		<!--<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />-->
+		<link type="text/css" href="jquery-ui-1.8.14.custom.css" rel="stylesheet">
+		<!-- AddThis buttons -->
+		<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e382630197b3da3"></script>
+		<!-- Our stuff -->
+		<script type="text/javascript" src="./script.js"></script>
+		<script type="text/javascript" src="./map.js"></script>
+		<link rel=stylesheet type="text/css" href="./style.css">
+	</head>
+	<body>
+		<div id="map_canvas" class="googlemaps" style="width:100%; height:100%"></div>
+		<div id="search-box" class="searchbox"> 
+			<img src="logo_small.png" alt="UniMatch logo">
+			
+			<div id="unititle">UniMatch allows for you to find universities that are best for you.</div>
+			
+			
+			<!-- Course Name -->
+			<div title="Course Help" id="course-dialog" style="display:none"> Filter out your results by entering your course name  </div>
+			
+			<img src="help.png" onclick="$('#course-dialog').dialog({modal:true})" alt="Help">
+			<input id="coursename" type="text" class="slidertext" placeholder="Course: "><br>
+		
+			<!-- University Group -->
+			<div title="University Group Help" id="grounp-dialog" style="display:none"> Select a preferred university group </div>
+			<img src="help.png" alt="Help" onclick="$('#grounp-dialog').dialog({modal:true})"> 
+			
+			<select id="group-combobox" size="1" style="width:225px; height:25px; font-family: chasm; font-size:18px; font-weight: bold; font-color: cccccc; border: 1px solid black;   ">
+				<option value="">University Group</option>
+				<option value="Any">Any</option>
+				<option value="Russell">Russell Group</option>
+				<option value="1994">1994 Group</option>
+				<option value="Million+">Million+</option>
+				<option value="Alliance">University Alliance</option>
+				<option value="UKADIA">UKADIA</option>
+			</select>
+			<br>
+			
+			<!-- Course Type -->
+			<div title="Course Type Help" id="type-dialog" style="display:none"> Enter your course type - which is the graduation you are awarded with when you complete your course </div>
+			<img src="help.png" alt="Help" onclick="$('#course-dialog').dialog({modal:true})">  
+			
+			<select id="type-combobox" size="1" style="width:225px; height:25px; font-family: chasm; font-size:18px; font-weight: bold; font-color: cccccc; border: 1px solid black; ">
+				<option value="">Course Type</option>
+				<option value="Any">Any</option>
+				<option value="All">Advanced Nursing Diploma</option>
+				<option value="All">Cert HE</option>
+				<option value="All">Postgraduat social work</option>
+				<option value="All">Degree</option>
+				<option value="All">Diploma in Nursery and Midwifery</option>
+				<option value="All">DIP HE</option>
+				<option value="All">Foundation Degree</option>
+				<option value="All">Graduate Diploma in Nursing</option>
+				<option value="All">HNC</option>
+				<option value="All">HND</option>
+			</select><br>
+			
+			<!-- Travel Time -->
+			<div title="Travel Time Help" id="distance-dialog" style="display:none"> Enter the preferred maximum time you wish to travel from home to university </div>
+			<img src="help.png" alt="Help" onclick="$('#distance-dialog').dialog({modal:true})"> 
+			 <input type="text" id="amount-distance" class="slidertext" placeholder="Travel Time: ">
+			<div id="slider-distance" class="slider"></div>
+			 
+			<!-- Home Postcode --> 
+			<div title="Home Postcode Help" id="distance-dialog" style="display:none"> Enter your home postcode to find universities located around your maximum travel time </div>
+			<img src="help.png" alt="Help" onclick="$('#distance-dialog').dialog({modal:true})"> 
+			
+			 <input id="postcode" type="text" class="slidertext" placeholder="Home Postcode"><br>
+			
+				
+			<!-- Tuition Fee -->
+			<div title="Tuition Fee Help" id="tuitionfee-dialog" style="display:none"> Filter out your results by selecting the range in which you wish to pay for tuition fees. Please note - the maximum for courses starting in 2012 is £9000 </div>
+			<img src="help.png" alt="Help" onclick="$('#tuitionfee-dialog').dialog({modal:true})">
+
+			<input type="text" id="amount-tuition" class="slidertext" placeholder="Tuition Fee: ">
+			<div id="slider-tuition" class="slider"></div>
+			
+			<!-- UCAS 
+			<div title="help box6" id="type-dialog" style="display:none"> Select the average UCAS points you prefer for the university across all courses and subjects </div>
+			<img src="help.png" alt="Help" onclick="$('#course-dialog').dialog({modal:true})"> 
+			<select id="ucas-combobox" size="1" style="width:225px; height:25px; font-family: chasm; font-size:18px; font-weight: bold; font-color: cccccc; border: 1px solid black;   ">
+				<option value="">Average UCAS Points Required</option>
+				<option value="0">Any</option>
+				<option value="1">0 - 180</option>
+				<option value="2">180 - 240</option>
+				<option value="3">240 - 300</option>
+				<option value="4">300 - 360</option>
+				<option value="5">360+</option>
+			</select><br>
+			
+			<!-- Student Staff Ratio -->
+			<div title="help box7" id="student:staff-dialog" style="display:none"> Select a range for your preferred Student:Teacher ratio. Hint - The average is between 13-18:1 </div>
+			<img src="help.png" alt="Help" onclick="$('#student:staff-dialog').dialog({modal:true})"> 
+			<input type="text" id="amount-staff" class="slidertext" placeholder="Student Staff Ratio: ">
+			<div id="slider-staff" class="slider"></div>
+			
+			<!-- Career Prospects -->
+			<div title="help box8" id="career-dialog" style="display:none"> Select your preferred percentage of graduates employed after completing their course </div>
+			<img src="help.png" alt="Help" onclick="$('#career-dialog').dialog({modal:true})"> 
+			<input type="text" id="amount-career" class="slidertext" placeholder="Career Prospects: ">
+			<div id="slider-career" class="slider"></div>
+			
+			<!-- NSS Teacher -->
+			<div title="help box9" id="nssteacher-dialog" style="display:none"> Select desired teacher rating which is the percentage of how effective the teaching staff are. These results are taken from the National Student Survey </div>
+			<img src="help.png" alt="Help" onclick="$('#nssteacher-dialog').dialog({modal:true})"> 
+			<input type="text" id="amount-teacher" class="slidertext" placeholder="Teacher Rating: ">
+			<div id="slider-teacher" class="slider"></div>
+			
+			<!-- NSS Feedback -->
+			<div title="help box10" id="nssfeedback-dialog" style="display:none"> Feedback ratings shows the percentage of how effective the feedback from the university is. these results are taken from the National Student Survey. </div>
+			<img src="help.png" alt="Help" onclick="$('#nssfeedback-dialog').dialog({modal:true})"> 
+			<input type="text" id="amount-feedback" class="slidertext" placeholder="Feedback Rating: ">
+			<div id="slider-feedback" class="slider"></div>
+			
+			<!-- NSS Overall -->
+			<div title="help box11" id="nssoverall-dialog" style="display:none"> Select your ideal overall rating of the University you are looking for. </div>
+			<img src="help.png" alt="Help" onclick="$('#nssoverall-dialog').dialog({modal:true})"> 
+			<input type="text" id="amount-overall" class="slidertext" placeholder="Overall Rating: ">
+			<div id="slider-overall" class="slider"></div>
+			
+			<!-- Pub Count -->
+			<div title="help box12" id="pub-dialog" style="display:none"> Select your preferred range of pubs that are in the area </div>
+			<img src="help.png" alt="Help" onclick="$('#pub-dialog').dialog({modal:true})"> 
+			<input type="text" id="amount-pubs" class="slidertext" placeholder="Pubs in Town: ">
+			<div id="slider-pubs" class="slider"></div>
+			
+			<!-- Clubs Count -->
+			<div title="help box13" id="clubs-dialog" style="display:none"> Select your preferred range of clubs that are in the area </div>
+			<img src="help.png" alt="Help" onclick="$('#club-dialog').dialog({modal:true})"> 			
+			<input type="text" id="amount-clubs" class="slidertext" placeholder="Clubs in Town: ">
+			<div id="slider-clubs" class="slider"></div>
+			
+			<br><button id="go">Find my UniMatch</button>
+			
+			
+			<!-- AddThis Button BEGIN -->
+			<div class="addthis_toolbox addthis_default_style">
+				<a class="addthis_button_preferred_1" style="width: 50px" ></a>
+				<a class="addthis_button_preferred_2"></a>
+				<a class="addthis_button_preferred_3"></a>
+				<a class="addthis_button_preferred_4"></a>
+				<a class="addthis_button_compact"></a>
+				<a class="addthis_counter addthis_bubble_style"></a>
+			</div>
+			<!-- AddThis Button END -->
+
+		</div>
+		
+		<div id="fluxxions" class="fluxbox">
+		  <img src="fluxxions.png" alt="The Fluxx Capacitors! logo">
+		</div>
+		
+		<div id="results-box" class="searchbox">
+			<div id="res-text"><img src="logo_small.png" alt="UniMatch logo"></div>
+			<button id="back">Main Page</button>
+			<br> 
+			<div id="results-container"></div>
+		</div>
+	</body>
+</html>

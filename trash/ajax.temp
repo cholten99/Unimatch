@@ -1,0 +1,8 @@
+	
+	/*$.ajax({
+	        url: './places.php',
+	        method: 'GET',
+	        data: { fred: "addr" },
+	        error: function(response) { alert(response); },
+	        success: function(response) { alert(response); }
+    	});*/	

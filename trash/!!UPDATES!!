@@ -1,0 +1,17 @@
+I have created a new table in the database called guardian_combo_complete. 
+This is the same as guardian_combo, but with 46 previously missing universities added.
+The data comes from the original Guardian Google Docs spreadsheet, which were removed before because there was no lat-long data for them in msh100's database.
+I have added in the lat-long data from the UCAS map <http://www.ucas.com/students/choosingcourses/choosinguni/map/>.
+As such, the information available for these universities are those supplied by The Guardian and the lat-long data.
+No information from msh100's database is available (fields are left as NULL).
+
+placesfromdb.php now uses the new database and map.js now uses placesfromdb.php, so additional universities appear on the main page.
+You can also call placesfromdb.php using 'placesfromdb.php?display=all' to show information for all universities in the guardian_combo_complete table sorted by institution.
+This is how all the universities are displayed on the main page.
+
+Because the table is missing data for the added universities, they will not appear in 'search mode'.
+In other words, <placesfromdb.php?group=&min-tut=0&max-tut=9000&min-staff=0&max-staff=30&min-car=0&max-car=100&teach=0&feedback=0&overall=0&min-club=0&max-club=200&min-pub=0&max-pub=1000> will not show the added universities.
+The table guardian_combo_complete should either be updated or placesfromdb.php should be able to handle NULL data.
+I'm more inclined to go for the latter.
+
+--Leon

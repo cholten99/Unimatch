@@ -1,0 +1,154 @@
+html { 
+	height: 100%; 
+}
+body { 
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:14px;
+	color: #222; 
+}
+#map_canvas { 
+	height:100%;	
+	width:100%;
+}
+h2 {
+	font-size: 50px;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+h3 {
+	font-size: 30px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.fieldtitle {
+	font-size: 14px;
+	line-height: 90%;
+}
+
+input {
+	border: 1px solid black;
+	font-size: 20px;
+	margin-left: -1px;
+}
+#unititle{
+	text-align: center;
+}
+a {
+	color: #666;
+}
+.dropdown {
+	width:225px; 
+	height:25px; 
+	font-size:14px; 
+	font-weight: bold;
+	font-color: cccccc;
+	border: 1px solid black;  
+}
+.drop-label {
+	font-size: 14px; 
+	font-weight: bold;
+}
+.searchbox {
+	z-index: 1;
+	position: absolute;
+	top: 50px;
+	bottom: 50px;
+	left: 90px;
+	background: rgba(255,255,255,0.6);
+	padding: 20px;
+	width: 35%;
+	border: 1px solid black;
+	overflow-y: scroll;
+}
+.field-box {
+	padding: 5px;
+}
+.slidertext {
+	border:0;
+	color:#222; 
+	font-weight: bold;
+	width: 55%;
+}
+.fluxbox {
+	z-index: 1;
+	position: absolute; 
+	right: 20px;
+	bottom: 20px; 
+	background: rgba(255,0,0,0.3);
+	padding: 5px;
+	width: 530;
+	height: 116;	
+	border: 1px solid black;
+	-moz-transition-property: opacity;
+	-moz-transition-duration: 1s;
+	-webkit-transition-property: opacity;
+	-webkit-transition-duration: 1s;
+	-o-transition-property: opacity;
+	-o-transition-duration: 1s;
+}
+.fluxbox:hover {
+	opacity: 0;
+	-moz-transition-property: opacity;
+	-moz-transition-duration: 1s;
+	-webkit-transition-property: opacity;
+	-webkit-transition-duration: 1s;
+	-o-transition-property: opacity;
+	-o-transition-duration: 1s;
+}	
+
+#res-text {
+        font-size: 1.4em;
+}
+#results-container {
+	width: 100%;
+}
+#results-sel .ui-selecting { 
+	background: #E9E9E9; 
+}
+#results-sel .ui-selected { 
+	background: #CCCCCC; 
+	color: white; 
+}
+#results-sel {
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+	width: 60%; 
+}
+#results-sel li { 
+	margin: 3px; 
+	padding: 0.4em; 
+	font-size: 1.4em; 
+	height: 18px; 
+}
+#reqd {
+	font-size: 11px;
+	vertical-align: top;
+	color: red;
+}
+#no-res {
+	font-size: 16px;
+}
+#filter-label {
+	font-size: 12px;
+	float: left;
+	width: 30%;
+}
+#go {
+	width: 60%;
+	float: right;
+}
+#logo {
+	padding: 10px;
+	float: left;
+}
+
+.addthis_toolbox {
+	padding: 10px;
+}
+.explain {
+	font-size: 14px;
+}

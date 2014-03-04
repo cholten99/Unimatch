@@ -1,0 +1,24 @@
+This is Richard's fork of the main UniMatch website.
+
+Stuff I'm intending to try:
+- Getting rid of all the distance / location stuff -CHECK
+- Integrating the geoxml3 library into our main code (somehow!) -CHECK
+- Doing all colours client-side -CHECK
+- Changing the exchange format to JSON or XML (i.e. Something quick!) -CHECK
+- Loading the stuff in the 'bubble' after loading all the points onto the map -CHECK
+- Any pipe-lining...
+
+And then the stuff that works well can be integrated back into the main version...
+
+
+Client <-> Server Interaction
+A New Model
+
+placesinjson.php returns all the data about all the universities that match the query except
+matching courses.
+
+getcourses.php takes a mandatory university_code argument as well as other arguments and
+returns the list of valid courses
+
+getcourses.php is called on the top 3 results as soon as the client recives them from
+placesinjson.php, and on subsequent results whenever they are clicked on (or maybe hover...)

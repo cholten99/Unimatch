@@ -1,0 +1,12 @@
+source :rubygems
+
+gem 'sinatra'
+gem 'sinatra-respond_to'
+gem 'nokogiri'
+gem 'dalli'
+gem 'active_support'
+gem 'json'
+
+group :development do
+  gem 'shotgun'
+end

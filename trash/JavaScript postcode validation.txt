@@ -1,0 +1,15 @@
+/* tests to see if string is in correct UK style postcode: AL1 1AB, BM1 5YZ etc. */
+function isValidPostcode(p) {
+	var postcodeRegEx = /[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}/i;
+	return postcodeRegEx.test(p);
+}
+
+/*	formats a VALID postcode nicely: AB120XY -> AB1 0XY */
+function formatPostcode(p) {
+	if (isValidPostcode(p)) {
+ var postcodeRegEx = /(^[A-Z]{1,2}[0-9]{1,2})([0-9][A-Z]{2}$)/i;
+ return p.replace(postcodeRegEx,"$1 $2");
+	} else {
+ return p;
+	}
+}

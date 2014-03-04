@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>
+  <% @universities.each do |university| %>
+    <Placemark>
+      <name><%= university.institution %></name>
+      <Point>
+        <coordinates><%= university.longitude %>,<%= university.latitude %></coordinates>
+        <description><![CDATA[<b>Uni group:</b> <%= unigroup %><br>
+        <b>Address:</b> <%= address %>]]></description>
+      </Point>
+    </Placemark>
+  <% end %>
+</kml>

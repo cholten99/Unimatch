@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UniMatch</title>
+		<meta charset="utf-8">
+		
+		<!-- Google Maps Stuff -->
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+		<script src="geoxml3.js"></script>
+		
+		<!-- jQuery Stuff -->
+		<!-- 1.6.2 -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<!-- 1.8.14 -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
+		<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
+	
+		<!-- Our stuff -->
+		<script type="text/javascript" src="./script.js"></script>
+		<script type="text/javascript" src="./map.js"></script>
+		<link rel=stylesheet type="text/css" href="./style.css"></script>
+	</head>
+	
+	<body>
+		<div id="map_canvas" class="googlemaps" style="width:100%; height:100%"></div>
+		
+		<div id="search-box" class="leftbox"> 
+			<h2>UniMatch</h2>  
+			<p>UniMatch allows for you to find universities that are best for you!
+			<p>
+			<p>So lets get started.. 
+			<p><input type="text" placeholder="Enter course here" onchange="update_centre();" id="address"></input></p> 
+			<input type="text" placeholder="Enter location here" onchange="update_centre();" id="address"></input></p>
+			<input type="text" placeholder="Enter code for tuiton fees" onchange="update_centre();" id="address"></input></p>
+			<div id="slider-range"></div>
+			<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" />
+			<input type="text" placeholder="Enter code for ucas points" onchange="update_centre();" id="address"></input></p>
+			<p class="tiny"> Young Rewired State!</p>
+		
+			<button id="go">Go !!!!!</button>
+		</div> 
+		<div id="results-box" class="rightbox"> 
+			<h3>Results</h3>
+			<br> 
+
+			<button id="back">Back!!</button>
+		</div> 
+	</body>
+</html>
+

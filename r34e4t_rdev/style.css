@@ -1,0 +1,148 @@
+html, body { 
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 14px;
+	color: #222;
+}
+#map_canvas { 
+	height:100%;	
+}
+h3 {
+	font-size: 30px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+input {
+	border: 1px solid black;
+	font-size: 20px;
+	margin-left: -1px;
+}
+#unititle{
+	text-align: center;
+}
+a {
+	color: #666;
+}
+.dropdown {
+	width:225px; 
+	height:25px; 
+	font-size:14px; 
+	font-weight: bold;
+	border: 1px solid black;  
+}
+.drop-label {
+	font-size: 14px; 
+	font-weight: bold;
+}
+/* Formbox is for the boxes on the left-hand side */
+.formbox {
+	z-index: 1;
+	position: absolute;
+	top: 50px;
+	bottom: 50px;
+	left: 90px;
+	padding: 20px;
+	width: 35%;
+	border: 1px solid black;
+	overflow-y: scroll;
+}
+/* Set their background based on browser transparency support */
+html.old > body > .formbox {
+	background: rgb(219,230,241);
+}
+html.modern > body > .formbox {
+	background: rgba(255,255,255,0.6);
+}
+.field-box {
+	padding: 5px;
+}
+.slidertext {
+	border:0;
+	color:#222; 
+	font-weight: bold;
+	width: 55%;
+}
+/* This is the box in the lower right corner */
+#fluxxions {
+	z-index: 1;
+	position: absolute; 
+	right: 20px;
+	bottom: 20px; 
+	padding: 5px;
+	width: 530;
+	height: 116;	
+	border: 1px solid black;
+	-moz-transition-property: opacity;
+	-moz-transition-duration: 1s;
+	-webkit-transition-property: opacity;
+	-webkit-transition-duration: 1s;
+	-o-transition-property: opacity;
+	-o-transition-duration: 1s;
+}
+/* Set its background based on browser transparency support */
+html.old > body > #fluxxions {
+	background: rgb(246,167,163);
+}
+html.modern > body > #fluxxions {
+	background: rgba(255,0,0,0.3);
+}
+#fluxxions:hover {
+	opacity: 0;
+	-moz-transition-property: opacity;
+	-moz-transition-duration: 1s;
+	-webkit-transition-property: opacity;
+	-webkit-transition-duration: 1s;
+	-o-transition-property: opacity;
+	-o-transition-duration: 1s;
+}	
+
+#res-text {
+        font-size: 1.4em;
+}
+#results-container {
+	width: 100%;
+}
+#reqd {
+	font-size: 11px;
+	vertical-align: top;
+	color: red;
+}
+#no-res {
+	font-size: 32px;
+}
+#filter-label {
+	font-size: 12px;
+	float: left;
+	width: 30%;
+}
+#go {
+	width: 60%;
+	float: right;
+}
+.logo {
+	padding: 10px;
+}
+#loading {
+	display: none;
+	font-size: 32px;
+	text-align: center;
+}
+.imghelp {
+	width: 16px;
+	height: 16px;
+}
+.explain {
+	font-size: 14px;
+}
+
+@media print {
+  html, body {
+    height: auto;
+  }
+
+  #map_canvas {
+    height: 650px;
+  }
+}

@@ -1,0 +1,18 @@
+Ok, so it's about 9:30 PM now, but I've found & fixed that bug that was stopping all the pins from appearing. 
+So now I can die/sleep happy.
+
+I traced it down to one single non-printing character in places.php. An enter in fact. It read:
+
+echo("
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>");
+
+When it should have read:
+
+echo("<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>");
+
+Apparently that change breaks all the markers... nice...
+And I only found it by chance because I was grumpy enough to get rid of it by habit...
+
+Let that be a lesson to us all.
