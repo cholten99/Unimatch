@@ -97,11 +97,11 @@
 	}
 	
 	function InitDB() {
-		$con = mysql_connect("localhost","bowsy","VU8Jc7ccirsre73"); // database info
+		$con = mysql_connect("localhost","shantelle","J5t9VWPl"); // database info
 		if (!$con) {
 	  		die('Could not connect: ' . mysql_error()); // if can't connect
 	  	}
-	  	mysql_select_db("bowsy_yrs2011", $con);
+	  	mysql_select_db("unimatch", $con);
 	  	
 	  	return $con;
 	}
