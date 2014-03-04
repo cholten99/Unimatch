@@ -13,7 +13,7 @@
 			 // my localhost configuration here
 		}
 
-		$con = mysql_connect($db['default']['hostname'], ['default']['username'], $db['default']['password']); // database info
+		$con = mysql_connect($db['default']['hostname'], $db['default']['username'], $db['default']['password']); // database info
 		if (!$con) {
 	  		die('Could not connect: ' . mysql_error()); // if can't connect
 	  	}
