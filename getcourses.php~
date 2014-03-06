@@ -1,9 +1,5 @@
 <?php
 
-// Logging
-include "Logging.php";
-ClearLog();
-
 	function InitDB() {
 
 		if (isset($_SERVER["DB1_HOST"])) {
@@ -19,9 +15,6 @@ ClearLog();
 
 		$con = mysql_connect($db['default']['hostname'], $db['default']['username'], $db['default']['password']); // database info
 		if (!$con) {
-
-TestLog("DB connect failed with" . mysql_error());
-
 	  		die('Could not connect: ' . mysql_error()); // if can't connect
 	  	}
 	  	mysql_select_db($db['default']['database'], $con);
