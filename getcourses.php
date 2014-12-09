@@ -1,30 +1,20 @@
 <?php
 
 // Logging
-include "Logging.php";
-ClearLog();
+// include "Logging.php";
+// ClearLog();
 
 	function InitDB() {
 
-		if (isset($_SERVER["DB1_HOST"])) {
-			// Pagodabox
-			$db['default']['hostname'] = $_SERVER["DB1_HOST"].':'.$_SERVER["DB1_PORT"];
-			$db['default']['username'] = $_SERVER["DB1_USER"];
-			$db['default']['password'] = $_SERVER["DB1_PASS"];
-			$db['default']['database'] = $_SERVER["DB1_NAME"];
-			$db['default']['port'] = $_SERVER["DB1_PORT"];
-		} else {
-			 // my localhost configuration here
-		}
+                $user = getenv("DB1_USER");
+                $pass = getenv("DB1_PASS");
 
-		$con = mysql_connect($db['default']['hostname'], $db['default']['username'], $db['default']['password']); // database info
+                $con = mysql_connect("localhost", $user, $pass);
+
 		if (!$con) {
-
-TestLog("DB connect failed with" . mysql_error());
-
 	  		die('Could not connect: ' . mysql_error()); // if can't connect
 	  	}
-	  	mysql_select_db($db['default']['database'], $con);
+	  	mysql_select_db("bowsy_yrs2011", $con);
 	  	
 	  	return $con;
 	}
